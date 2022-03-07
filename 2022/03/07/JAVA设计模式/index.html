@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, zs-blog">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="JAVA设计模式, zs-blog">
+    <meta name="description" content="JAVA设计模式单例模式定义：只涉及到一个单一的类，该类创建自己的对象，同时只会创建一个对象被使用特点：构造私有化，自己创建自己的对象并且只会创建一个对象，提供一个返回自身对象的接口供外使用使用场景：1.需要生成唯一序列的环境2.需要频繁实">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | zs-blog</title>
+    <title>JAVA设计模式 | zs-blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">JAVA设计模式</h1>
                 </div>
             </div>
         </div>
@@ -428,9 +428,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/web/">
+                                <span class="chip bg-color">web</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -442,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-27
+                    2022-03-07
                 </div>
                 
 
@@ -463,19 +467,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <h1 id="JAVA设计模式"><a href="#JAVA设计模式" class="headerlink" title="JAVA设计模式"></a><strong>JAVA设计模式</strong></h1><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a><strong>单例模式</strong></h2><p>定义：只涉及到一个单一的类，该类创建自己的对象，同时只会创建一个对象被使用<br>特点：构造私有化，自己创建自己的对象并且只会创建一个对象，提供一个返回自身对象的接口供外使用<br>使用场景：<br>1.需要生成唯一序列的环境<br>2.需要频繁实例化然后销毁的对象。<br>3.创建对象时耗时过多或者耗资源过多，但又经常用到的对象。<br>4.方便资源相互通信的环境<br>举个例子吧: 我们的电脑中使用的任务管理器，就是一个单例模式。 我们不管点多少次运行任务管理器，是不是操作的都是一个任务管理器的窗口。</p>
+<p>单例模式又分为饿汉模式和懒汉模式两种类型    </p>
+<ul>
+<li>饿汉模式<br>特点：类加载时对象就已经被创建  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private Singleton()&#123;&#125;;</span><br><span class="line">    private static Singleton singleton=new Singleton();</span><br><span class="line">    public static Singleton getSingleton()&#123;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">静态代码块创建方式：    </span><br><span class="line">public class Singleton1 &#123;</span><br><span class="line">    private Singleton1()&#123;&#125;;</span><br><span class="line">    private static Singleton1 singleton;</span><br><span class="line">    static &#123;</span><br><span class="line">        singleton=new Singleton1();</span><br><span class="line">    &#125;</span><br><span class="line">    public static Singleton1 getSingleton()&#123;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>懒汉模式<br>特点: 在使用时才会创建对象<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">方式一： 锁住获取对象的方法 (锁的粒度大)</span><br><span class="line">public class Singleton2 &#123;</span><br><span class="line">    private Singleton2()&#123;&#125;;</span><br><span class="line">    private static Singleton2 singleton;</span><br><span class="line">    public static synchronized Singleton2 getSingleton()&#123;</span><br><span class="line">        if(singleton==null)&#123;</span><br><span class="line">            singleton = new Singleton2();</span><br><span class="line">        &#125;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">方式二： 双重检查锁  (锁的粒度小，效率更高)</span><br><span class="line">public class Singleton3 &#123;</span><br><span class="line">    private Singleton3()&#123;&#125;;</span><br><span class="line">    private static Singleton3 singleton;</span><br><span class="line">    public static synchronized Singleton3 getSingleton()&#123;</span><br><span class="line">        //如果不为空不需要占锁</span><br><span class="line">        if(singleton==null)&#123;</span><br><span class="line">            synchronized (Singleton3.class)&#123;</span><br><span class="line">                if(singleton==null)&#123;</span><br><span class="line">                    singleton = new Singleton3();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   </span><br><span class="line">方式三： 静态内部类创建</span><br><span class="line">public class Singleton4 &#123;</span><br><span class="line">    private Singleton4()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    private static class SingletonHolder&#123;</span><br><span class="line">        private static final Singleton4 singleton4=new Singleton4();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton4 getSingleton()&#123;</span><br><span class="line">        return SingletonHolder.singleton4;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">其它还有什么枚举的创建方式等就不一一说了....</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>看完单例模式的几种形式后，我们心里有没有疑问？  单例模式是不是坚不可摧的呢，我们有没有可能会破坏单例模式？  好了，那下面就说下单例模式的几种破坏方式。我们就以上例中的静态内部类创建方式为例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">破坏方式一:  序列化破坏</span><br><span class="line">public class Singleton5 implements Serializable &#123;</span><br><span class="line">    private Singleton5()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    private static class  Singleton5Holder&#123;</span><br><span class="line">        private static final Singleton5 s=new Singleton5();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton5 getSingleton()&#123;</span><br><span class="line">        return Singleton5Holder.s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    在测试类中测试</span><br><span class="line">    //----将对象输出到文件中</span><br><span class="line">    Singleton5 singleton = Singleton5.getSingleton();</span><br><span class="line">    ObjectOutputStream outputStream=new ObjectOutputStream(new FileOutputStream(&quot;C:\\designMode\\a.txt&quot;));</span><br><span class="line">    outputStream.writeObject(singleton);</span><br><span class="line">    outputStream.close();</span><br><span class="line">    //  读取文件转为对象</span><br><span class="line">    ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(&quot;C:\\designMode\\a.txt&quot;));</span><br><span class="line">    Singleton5 singleton8 = (Singleton5) objectInputStream.readObject();</span><br><span class="line">    ObjectInputStream objectInputStream1=new ObjectInputStream(new FileInputStream(&quot;C:\\designMode\\a.txt&quot;));</span><br><span class="line">    Singleton5 singleton9 = (Singleton5) objectInputStream1.readObject();</span><br><span class="line">    objectInputStream.close();</span><br><span class="line">    objectInputStream1.close();</span><br><span class="line">    System.out.println(&quot;singleton8:&quot;+singleton8);</span><br><span class="line">    System.out.println(&quot;singleton9:&quot;+singleton9);</span><br><span class="line"></span><br><span class="line">破坏方式二：反射破坏单例模式    </span><br><span class="line">    Class&lt;Singleton5&gt; singleton5Class = Singleton5.class;</span><br><span class="line">    //获取无参构造对象</span><br><span class="line">    Constructor declaredConstructors = singleton5Class.getDeclaredConstructor();</span><br><span class="line">    //取消访问检查</span><br><span class="line">    declaredConstructors.setAccessible(true);</span><br><span class="line">    //创建对象</span><br><span class="line">    Singleton5 singleton10 = (Singleton5) declaredConstructors.newInstance();</span><br><span class="line">    Singleton5 singleton11 = (Singleton5) declaredConstructors.newInstance();</span><br><span class="line">    System.out.println(singleton10);</span><br><span class="line">    System.out.println(singleton11);</span><br><span class="line"></span><br><span class="line">    Class&lt;Singleton6&gt; singleton6Class = Singleton6.class;</span><br><span class="line">    //获取无参构造对象</span><br><span class="line">    Constructor declaredConstructors1 = singleton6Class.getDeclaredConstructor();</span><br><span class="line">    //取消访问检查</span><br><span class="line">    declaredConstructors1.setAccessible(true);</span><br><span class="line">    //创建对象</span><br><span class="line">    Singleton6 singleton12 = (Singleton6) declaredConstructors1.newInstance();</span><br><span class="line">    System.out.println(&quot;singleton12:&quot;+singleton12);</span><br><span class="line">    Singleton6 singleton13 = (Singleton6) declaredConstructors1.newInstance();</span><br><span class="line">    System.out.println(&quot;singleton13:&quot;+singleton13);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>来看看输出结果吧<br>  反序列化破坏<br>  <img src="https://guli-zs.oss-cn-heyuan.aliyuncs.com/1646642430%281%29.jpg"> </p>
+<p>  反射破坏<br>  <img src="https://guli-zs.oss-cn-heyuan.aliyuncs.com/1646643125%281%29.jpg"> </p>
+<p>  可以看到两次的实例均不是一个实例，说明都已破坏了单例模式。 那么，我们该怎么解决这种问题呢？<br>  首先，先分析一下反序列化为什么会出现这种结果。<br>  Singleton5 singleton9 = (Singleton5) objectInputStream1.readObject(); 看看readObject()方法的源码。进入后可以看到有这样一段代码(怎么进的不用我多说了吧，自己debug)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    obj = desc.isInstantiable() ? desc.newInstance() : null;</span><br><span class="line">&#125; catch (Exception ex) &#123;</span><br><span class="line">    throw (IOException) new InvalidClassException(</span><br><span class="line">        desc.forClass().getName(),</span><br><span class="line">        &quot;unable to create instance&quot;).initCause(ex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  可以看到，每次反序列化的时候，都会创建一个实例，这就解释了为什么反序列化实例不是一个了。 那么怎么解决怎么问题呢，继续往下看源码。会发现这样一段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">if (obj != null &amp;&amp;</span><br><span class="line">          handles.lookupException(passHandle) == null &amp;&amp;</span><br><span class="line">          desc.hasReadResolveMethod())</span><br><span class="line">      &#123;</span><br><span class="line">          Object rep = desc.invokeReadResolve(obj);</span><br><span class="line">          if (unshared &amp;&amp; rep.getClass().isArray()) &#123;</span><br><span class="line">              rep = cloneArray(rep);</span><br><span class="line">          &#125;</span><br><span class="line">          if (rep != obj) &#123;</span><br><span class="line">              // Filter the replacement object</span><br><span class="line">              if (rep != null) &#123;</span><br><span class="line">                  if (rep.getClass().isArray()) &#123;</span><br><span class="line">                      filterCheck(rep.getClass(), Array.getLength(rep));</span><br><span class="line">                  &#125; else &#123;</span><br><span class="line">                      filterCheck(rep.getClass(), -1);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              handles.setObject(passHandle, obj = rep);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>  关键的地方就在hasReadResolveMethod()关键的地方就在hasReadResolveMethod是true, 就会把invokeReadResolve(obj)生成的对象赋值到obj中. 那么此时我们在单例的类中重写ReadResolve方法，使它返回一个实例就行了，反序列换的时候，就会使用这个实例了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">修改后， 不信的话自己去测试哈！！！</span><br><span class="line">  public class Singleton5 implements Serializable &#123;</span><br><span class="line">      private Singleton5()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">      private static class  Singleton5Holder&#123;</span><br><span class="line">          private static final Singleton5 s=new Singleton5();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      public static Singleton5 getSingleton()&#123;</span><br><span class="line">          return Singleton5Holder.s;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      //反序列化破坏单例模式解决方法: 重写readResolve方法</span><br><span class="line">      public Object readResolve()&#123;</span><br><span class="line">          return Singleton5.getSingleton();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>  至于反射会破坏单例模式是因为，反射是通过构造方法创建实例，每次都会创建一个心的实例，所以每次的实例都不一样。 那么怎么解决呢？ 看代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  public class Singleton6 implements Serializable &#123;</span><br><span class="line">    private static boolean flag=false;</span><br><span class="line">    private Singleton6()&#123;</span><br><span class="line">        //反射获取对象破坏单例模式解决方法:   构造里面判断对象是否重复</span><br><span class="line">        synchronized (Singleton6.class)&#123;</span><br><span class="line">            if(flag)&#123;</span><br><span class="line">                throw new RuntimeException(&quot;不能创建多个对象&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            flag=true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    private static class  Singleton5Holder&#123;</span><br><span class="line">        private static final Singleton6 s=new Singleton6();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton6 getSingleton()&#123;</span><br><span class="line">        return Singleton5Holder.s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">在构造方法里面判断对象是否多次创建，是的话就抛异常</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+
+
+
+
 
                 
             </div>
@@ -502,7 +520,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhangxiaozesi.github.io/2022/02/27/hello-world/">https://zhangxiaozesi.github.io/2022/02/27/hello-world/</a>
+                    <a href="https://zhangxiaozesi.github.io/2022/03/07/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">https://zhangxiaozesi.github.io/2022/03/07/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -539,7 +557,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/web/">
+                                    <span class="chip bg-color">web</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -711,9 +733,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/03/07/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JAVA设计模式">
+                        
+                        <span class="card-title">JAVA设计模式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            一蓑烟雨
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/02/28/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
                     <div class="card-image">
@@ -731,9 +800,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -750,44 +819,6 @@
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/02/27/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            一蓑烟雨
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
