@@ -470,7 +470,7 @@
                 <h1 id="Mybatis如何抽取公共代码块供调用"><a href="#Mybatis如何抽取公共代码块供调用" class="headerlink" title="Mybatis如何抽取公共代码块供调用"></a>Mybatis如何抽取公共代码块供调用</h1><p>最近在做一个公司内部项目管理平台，功能基本都已经开发完成，后来客户临时加了需求，说需要在各大模块中，加上数据过滤规则，老大把这个任务交给了我。说白了，其实也就是在原本的sql中的where后面，加上客户要求的过滤规则条件。因为项目使用的是mybatis, 数据获取的sql语句都是写在mapper.xml文件里面，我最开始的思路是: 先写好这个过滤规则，然后一个个的复制到各个模块对应的mapper.xml文件中。 但是由于模块很多，一个个复制的话，不仅会增加很多重复工作，有很多重复代码，而且看起来感觉特别low。所以后来就想着， 既然都是使用相同的过滤规则， 那么我是否可以把写好的过滤规则提取到一个公共的mapper.xml文件中，封装成一个公共代码块，供其它模块调用。 说干就干，于是我就写成了这样<br><img src="https://guli-zs.oss-cn-heyuan.aliyuncs.com/1648290665%281%29.png"><br>我创建了一个新的CommonMapper.xml，将公共的过滤规则sql放在了authority代码块中，并且namespace命名为common (这个可以自己随便命名)，然后其它模块的mapper.xml文件中这样调用:<br><img src="https://guli-zs.oss-cn-heyuan.aliyuncs.com/1648291282%281%29.jpg"><br><strong>注意：</strong><br>由于被调用的代码块和调用方所不在一个mapper.xml文件中，所以调用的时候，需要加上namespace，因为我的namespace是common，所以就是common.authority. 还有在调用方的<include>标签中，我加上了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name=&quot;tableAlias&quot; value=&quot;pb&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <p>这行代码作用是，给公共代码块传值，name代表参数名,  value代表值， 在公共代码块中， 只需要 ${参数名},就可以获取到对应的参数值了。</p>
-<p>因为我所做的业务场景中，会涉及到很多mapper.xml都需要调用这个代码块, 而每个代码块中为表所取的别名都不一样，所以我只能选择动态的将每个xml文件中标的别名传给公共代码块使用。</p>
+<p>因为我所做的业务场景中，会涉及到很多mapper.xml都需要调用这个代码块, 而每个代码块中为表所取的别名都不一样，所以我只能选择动态的将每个xml文件中表的别名传给公共代码块使用。</p>
 
                 
             </div>
